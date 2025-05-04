@@ -1,0 +1,110 @@
+[
+    {
+        "name": "Alice Green",
+        "slug": "alice-green",
+        "email": "alice.green@example.com",
+        "role": "user",
+        "password": "hashedpassword123",
+        "passwordConfirm": "hashedpassword123",
+        "profile_picture": "https://example.com/images/alice_profile.jpg",
+        "Phone": "+1234567890",
+        "birthDate": "1990-06-15T00:00:00Z",
+        "passwordChangedAt": "2024-01-01T10:00:00Z"
+    },
+    {
+        "name": "Bob Smith",
+        "slug": "bob-smith",
+        "email": "bob.smith@example.com",
+        "role": "artisan",
+        "password": "hashedpassword321",
+        "passwordConfirm": "hashedpassword321",
+        "profile_picture": "https://example.com/images/bob_profile.jpg",
+        "Phone": "+9876543210",
+        "birthDate": "1985-11-20T00:00:00Z",
+        "passwordChangedAt": "2024-02-10T09:00:00Z"
+    },
+    {
+        "name": "Clara White",
+        "slug": "clara-white",
+        "email": "clara.white@example.com",
+        "role": "admin",
+        "password": "hashedpassword456",
+        "passwordConfirm": "hashedpassword456",
+        "profile_picture": "https://example.com/images/clara_profile.jpg",
+        "Phone": "+1122334455",
+        "birthDate": "1992-05-10T00:00:00Z",
+        "passwordChangedAt": "2024-03-01T12:00:00Z"
+    },
+    {
+        "name": "David Brown",
+        "slug": "david-brown",
+        "email": "david.brown@example.com",
+        "role": "user",
+        "password": "hashedpassword789",
+        "passwordConfirm": "hashedpassword789",
+        "profile_picture": "https://example.com/images/david_profile.jpg",
+        "Phone": "+1234509876",
+        "birthDate": "1988-07-12T00:00:00Z",
+        "passwordChangedAt": "2024-04-10T14:00:00Z"
+    },
+    {
+        "name": "Eva Black",
+        "slug": "eva-black",
+        "email": "eva.black@example.com",
+        "role": "user",
+        "password": "hashedpassword1234",
+        "passwordConfirm": "hashedpassword1234",
+        "profile_picture": "https://example.com/images/eva_profile.jpg",
+        "Phone": "+1987654321",
+        "birthDate": "1995-09-30T00:00:00Z",
+        "passwordChangedAt": "2024-05-15T15:00:00Z"
+    },
+    {
+        "name": "Frank Turner",
+        "slug": "frank-turner",
+        "email": "frank.turner@example.com",
+        "role": "artisan",
+        "password": "hashedpassword5678",
+        "passwordConfirm": "hashedpassword5678",
+        "profile_picture": "https://example.com/images/frank_profile.jpg",
+        "Phone": "+1423567890",
+        "birthDate": "1982-03-22T00:00:00Z",
+        "passwordChangedAt": "2024-06-05T16:00:00Z"
+    },
+    {
+        "name": "Grace Wilson",
+        "slug": "grace-wilson",
+        "email": "grace.wilson@example.com",
+        "role": "user",
+        "password": "hashedpassword6789",
+        "passwordConfirm": "hashedpassword6789",
+        "profile_picture": "https://example.com/images/grace_profile.jpg",
+        "Phone": "+1574321098",
+        "birthDate": "1993-10-25T00:00:00Z",
+        "passwordChangedAt": "2024-07-10T18:00:00Z"
+    },
+    {
+        "name": "Helen Clark",
+        "slug": "helen-clark",
+        "email": "helen.clark@example.com",
+        "role": "admin",
+        "password": "hashedpassword9876",
+        "passwordConfirm": "hashedpassword9876",
+        "profile_picture": "https://example.com/images/helen_profile.jpg",
+        "Phone": "+1687654321",
+        "birthDate": "1987-12-14T00:00:00Z",
+        "passwordChangedAt": "2024-08-20T17:00:00Z"
+    },
+    {
+        "name": "Ian Scott",
+        "slug": "ian-scott",
+        "email": "ian.scott@example.com",
+        "role": "artisan",
+        "password": "hashedpassword4321",
+        "passwordConfirm": "hashedpassword4321",
+        "profile_picture": "https://example.com/images/ian_profile.jpg",
+        "Phone": "+1345678901",
+        "birthDate": "1994-02-18T00:00:00Z",
+        "passwordChangedAt": "2024-09-25T20:00:00Z"
+    }
+]

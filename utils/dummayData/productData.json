@@ -1,0 +1,238 @@
+[
+    {
+        "title": "Wooden Bowl",
+        "slug": "wooden-bowl",
+        "description": "A beautifully crafted wooden bowl, perfect for home decor or serving. Made from eco-friendly materials and hand-carved with attention to detail.",
+        "quantity": 50,
+        "sold": 10,
+        "price": 35.99,
+        "priceAfterDiscount": 30.99,
+        "colors": [
+            "brown",
+            "natural wood"
+        ],
+        "imageCover": "https://example.com/images/wooden_bowl_1.jpg",
+        "images": [
+            "https://example.com/images/wooden_bowl_1.jpg",
+            "https://example.com/images/wooden_bowl_2.jpg"
+        ],
+        "category": "6749de8cd1f5d0f1c9518a94",
+        "subcategories": [
+            "6749df7f318b6f2001861157"
+        ],
+        "currency": "USD",
+        "materials": [
+            "wood",
+            "eco-friendly"
+        ],
+        "weight": 0.5,
+        "ratingsAverage": 4.5,
+        "ratingsQuantity": 12
+    },
+    {
+        "title": "Leather Wallet",
+        "slug": "leather-wallet",
+        "description": "A sleek and durable leather wallet made with fine craftsmanship. Ideal for both men and women, designed to hold cards and cash neatly.",
+        "quantity": 120,
+        "sold": 45,
+        "price": 45.50,
+        "priceAfterDiscount": 40.00,
+        "colors": [
+            "black",
+            "brown"
+        ],
+        "imageCover": "https://example.com/images/leather_wallet_1.jpg",
+        "images": [
+            "https://example.com/images/leather_wallet_1.jpg",
+            "https://example.com/images/leather_wallet_2.jpg"
+        ],
+        "category": "6749de8cd1f5d0f1c9518a94",
+        "subcategories": [
+            "6749df7f318b6f2001861157"
+        ],
+        "currency": "USD",
+        "materials": [
+            "leather"
+        ],
+        "weight": 0.2,
+        "ratingsAverage": 4.7,
+        "ratingsQuantity": 32
+    },
+    {
+        "title": "Ceramic Vase",
+        "slug": "ceramic-vase",
+        "description": "This hand-painted ceramic vase is a unique addition to any home. With intricate patterns and a sturdy build, it's perfect for flowers or simply as decor.",
+        "quantity": 30,
+        "sold": 12,
+        "price": 29.99,
+        "priceAfterDiscount": 25.00,
+        "colors": [
+            "white",
+            "blue"
+        ],
+        "imageCover": "https://example.com/images/ceramic_vase_1.jpg",
+        "images": [
+            "https://example.com/images/ceramic_vase_1.jpg",
+            "https://example.com/images/ceramic_vase_2.jpg"
+        ],
+        "category": "6749de8cd1f5d0f1c9518a94",
+        "subcategories": [
+            "6749df7f318b6f2001861157"
+        ],
+        "currency": "USD",
+        "materials": [
+            "ceramic"
+        ],
+        "weight": 1.2,
+        "ratingsAverage": 4.8,
+        "ratingsQuantity": 8
+    },
+    {
+        "title": "Knitted Scarf",
+        "slug": "knitted-scarf",
+        "description": "Soft, hand-knitted wool scarf to keep you warm during the cold weather. Available in multiple colors.",
+        "quantity": 75,
+        "sold": 25,
+        "price": 18.75,
+        "priceAfterDiscount": 16.50,
+        "colors": [
+            "red",
+            "blue",
+            "green"
+        ],
+        "imageCover": "https://example.com/images/knitted_scarf_1.jpg",
+        "images": [
+            "https://example.com/images/knitted_scarf_1.jpg",
+            "https://example.com/images/knitted_scarf_2.jpg"
+        ],
+        "category": "6749de8cd1f5d0f1c9518a94",
+        "subcategories": [
+            "6749df7f318b6f2001861157"
+        ],
+        "currency": "USD",
+        "materials": [
+            "wool"
+        ],
+        "weight": 0.3,
+        "ratingsAverage": 4.3,
+        "ratingsQuantity": 18
+    },
+    {
+        "title": "Silver Earrings",
+        "slug": "silver-earrings",
+        "description": "Elegant silver earrings with a unique design. Perfect for casual wear or special occasions.",
+        "quantity": 200,
+        "sold": 80,
+        "price": 22.99,
+        "priceAfterDiscount": 19.99,
+        "colors": [
+            "silver"
+        ],
+        "imageCover": "https://example.com/images/silver_earrings_1.jpg",
+        "images": [
+            "https://example.com/images/silver_earrings_1.jpg",
+            "https://example.com/images/silver_earrings_2.jpg"
+        ],
+        "category": "6749de8cd1f5d0f1c9518a94",
+        "subcategories": [
+            "6749df7f318b6f2001861157"
+        ],
+        "currency": "USD",
+        "materials": [
+            "silver"
+        ],
+        "weight": 0.1,
+        "ratingsAverage": 4.6,
+        "ratingsQuantity": 45
+    },
+    {
+        "title": "Ceramic Mug",
+        "slug": "ceramic-mug",
+        "description": "A cozy hand-painted ceramic mug, perfect for your morning coffee.",
+        "quantity": 100,
+        "sold": 50,
+        "price": 14.99,
+        "priceAfterDiscount": 12.99,
+        "colors": [
+            "blue",
+            "green",
+            "yellow"
+        ],
+        "imageCover": "https://example.com/images/ceramic_mug_1.jpg",
+        "images": [
+            "https://example.com/images/ceramic_mug_1.jpg",
+            "https://example.com/images/ceramic_mug_2.jpg"
+        ],
+        "category": "6749de8cd1f5d0f1c9518a94",
+        "subcategories": [
+            "6749df7f318b6f2001861157"
+        ],
+        "currency": "USD",
+        "materials": [
+            "ceramic"
+        ],
+        "weight": 0.25,
+        "ratingsAverage": 4.7,
+        "ratingsQuantity": 25
+    },
+    {
+        "title": "Wooden Board",
+        "slug": "wooden-board",
+        "description": "A high-quality wooden cutting board for all your kitchen needs. Ideal for chopping and preparing meals.",
+        "quantity": 85,
+        "sold": 40,
+        "price": 27.50,
+        "priceAfterDiscount": 24.00,
+        "colors": [
+            "brown",
+            "natural wood"
+        ],
+        "imageCover": "https://example.com/images/wooden_cutting_board_1.jpg",
+        "images": [
+            "https://example.com/images/wooden_cutting_board_1.jpg",
+            "https://example.com/images/wooden_cutting_board_2.jpg"
+        ],
+        "category": "6749de8cd1f5d0f1c9518a94",
+        "subcategories": [
+            "6749df7f318b6f2001861157"
+        ],
+        "currency": "USD",
+        "materials": [
+            "wood"
+        ],
+        "weight": 1.0,
+        "ratingsAverage": 4.8,
+        "ratingsQuantity": 35
+    },
+    {
+        "title": "Beaded Necklace",
+        "slug": "beaded-necklace",
+        "description": "A beautiful handmade beaded necklace, perfect for adding a touch of elegance to your outfit.",
+        "quantity": 150,
+        "sold": 75,
+        "price": 20.00,
+        "priceAfterDiscount": 18.00,
+        "colors": [
+            "gold",
+            "silver",
+            "red"
+        ],
+        "imageCover": "https://example.com/images/beaded_necklace_1.jpg",
+        "images": [
+            "https://example.com/images/beaded_necklace_1.jpg",
+            "https://example.com/images/beaded_necklace_2.jpg"
+        ],
+        "category": "6749de8cd1f5d0f1c9518a94",
+        "subcategories": [
+            "6749df7f318b6f2001861157"
+        ],
+        "currency": "USD",
+        "materials": [
+            "beads",
+            "gold"
+        ],
+        "weight": 0.05,
+        "ratingsAverage": 4.4,
+        "ratingsQuantity": 40
+    }
+]

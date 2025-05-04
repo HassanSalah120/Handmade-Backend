@@ -1,0 +1,72 @@
+[
+    {
+        "review": "This beaded necklace is absolutely stunning! The quality is amazing, and it looks even better in person.",
+        "rating": 5,
+        "createdAt": "2024-12-01T10:00:00Z",
+        "product": "676e0d1a15e7f03c0154c160",
+        "user": "676e0c21161e459de3733782"
+    },
+    {
+        "review": "I love the craftsmanship of the wooden table, but it could have been packed better for delivery.",
+        "rating": 4,
+        "createdAt": "2024-12-02T12:30:00Z",
+        "product": "676e0c1d161e459de3733763",
+        "user": "676e0c21161e459de3733781"
+    },
+    {
+        "review": "The ceramic mug set is beautiful! A perfect addition to my kitchen. Highly recommend!",
+        "rating": 5,
+        "createdAt": "2024-12-03T08:45:00Z",
+        "product": "676e0c1d161e459de3733766",
+        "user": "676e0c21161e459de3733780"
+    },
+    {
+        "review": "Not bad, but the color is a bit different from what I expected. Still a nice item overall.",
+        "rating": 3,
+        "createdAt": "2024-12-04T09:00:00Z",
+        "product": "676e0c1d161e459de3733768",
+        "user": "676e0c21161e459de3733780"
+    },
+    {
+        "review": "The leather wallet is very sturdy, but it feels a little heavier than I expected.",
+        "rating": 4,
+        "createdAt": "2024-12-05T11:00:00Z",
+        "product": "676e0c1d161e459de3733761",
+        "user": "676e0c21161e459de3733780"
+    },
+    {
+        "review": "Excellent service and the handwoven scarf is incredibly soft. Will definitely buy more from this shop.",
+        "rating": 5,
+        "createdAt": "2024-12-06T13:30:00Z",
+        "product": "676e0c1d161e459de3733762",
+        "user": "676e0c21161e459de373377e"
+    },
+    {
+        "review": "The jewelry set is beautiful, but the chain broke after a week of use. Disappointed with the durability.",
+        "rating": 2,
+        "createdAt": "2024-12-07T14:20:00Z",
+        "product": "676e0c1d161e459de3733767",
+        "user": "676e0c21161e459de373377e"
+    },
+    {
+        "review": "Fantastic quality on the handmade basket! The colors are vibrant, and it adds such a lovely touch to my home.",
+        "rating": 5,
+        "createdAt": "2024-12-08T16:45:00Z",
+        "product": "676e0c1d161e459de3733767",
+        "user": "676e0c21161e459de373377d"
+    },
+    {
+        "review": "The hand-painted vase is gorgeous, but it took a little longer than expected to arrive.",
+        "rating": 4,
+        "createdAt": "2024-12-09T17:50:00Z",
+        "product": "676e0c1d161e459de3733767",
+        "user": "676e0c21161e459de373377c"
+    },
+    {
+        "review": "The handmade soap smells great, but I expected it to last longer. It's a bit small for the price.",
+        "rating": 3,
+        "createdAt": "2024-12-10T18:30:00Z",
+        "product": "676e0c1d161e459de3733763",
+        "user": "676e0c21161e459de373377c"
+    }
+]
