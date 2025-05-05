@@ -73,9 +73,16 @@ exports.getLoggedUserCart = asyncHandler(async (req, res, nxt) => {
   const cart = await Cart.findOne({ user: req.user.id });
 
   if (!cart) {
-    return nxt(
-      new AppError(`There is no cart for this user id : ${req.user.id}`, 404)
-    );
+    return res.status(200).json({
+      status: "Success",
+      numOfCartItems: 0,
+      data: {
+        cartItems: [],
+        totalCartPrice: 0,
+        _id: null,
+        user: req.user.id,
+      },
+    });
   }
 
   res.status(200).json({

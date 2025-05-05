@@ -10,7 +10,7 @@ const {
 } = require("../controller/cartController");
 const router = express.Router();
 
-router.use(protect, restrictTo("user"));
+router.use(protect, restrictTo("user", "admin", "artisan"));
 
 router
   .route("/")

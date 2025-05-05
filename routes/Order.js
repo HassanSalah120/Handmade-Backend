@@ -8,6 +8,8 @@ const {
   filterOrderForLoggedUser,
   checkoutSession,
 } = require("../controller/orderController");
+const { deleteOne } = require("../controller/handlersFactory");
+const Order = require("../models/orderModel");
 
 const router = express.Router();
 
@@ -32,5 +34,8 @@ router.put(
   restrictTo("admin", "artisan"),
   updateOrderToDelivered
 );
+
+// Add DELETE endpoint for orders
+router.delete("/:id", restrictTo("admin"), deleteOne(Order));
 
 module.exports = router;

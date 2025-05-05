@@ -7,7 +7,7 @@ const {
 } = require("../controller/wishListController");
 const router = express.Router();
 
-router.use(protect, restrictTo("user"));
+router.use(protect, restrictTo("user", "admin", "artisan"));
 
 router.route("/").post(addProductToWishList).get(getLoggedUserWishlist);
 router.route("/:productId").delete(removeProductFromWishList);

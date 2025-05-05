@@ -139,14 +139,42 @@ exports.getUserOrders = asyncHandler(async (req, res, nxt) => {
 });
 
 const createCardOrder = asyncHandler(async (session) => {
+  console.log(`Starting order creation for session ${session.id}`);
+  
   const cartId = session.client_reference_id;
-  const shippingAddress = session.metadata;
+  if (!cartId) {
+    throw new Error('No cart ID found in session metadata');
+  }
+  
+  // Parse shipping address from metadata
+  let shippingAddress;
+  try {
+    shippingAddress = session.metadata && session.metadata.shippingAddress 
+      ? JSON.parse(session.metadata.shippingAddress) 
+      : {};
+  } catch (error) {
+    console.error("Error parsing shipping address:", error);
+    shippingAddress = {};
+  }
+  
   const orderPrice = session.amount_total / 100;
 
+  // Find the cart
   const cart = await Cart.findById(cartId);
+  if (!cart) {
+    throw new Error(`Cart not found with ID: ${cartId}`);
+  }
+  console.log(`Found cart with ${cart.cartItems.length} items`);
+
+  // Find the user
   const user = await User.findOne({ email: session.customer_email });
+  if (!user) {
+    throw new Error(`User not found with email: ${session.customer_email}`);
+  }
+  console.log(`Found user: ${user._id} (${user.email})`);
 
   // 3) Create order with default paymentMethodType card
+  console.log(`Creating order for user ${user._id}`);
   const order = await Order.create({
     user: user._id,
     cartItems: cart.cartItems,
@@ -157,18 +185,26 @@ const createCardOrder = asyncHandler(async (session) => {
     paymentMethodType: "card",
   });
 
+  console.log(`Order created with ID: ${order._id}`);
+
   // 4) After creating order, decrement product quantity, increment product sold
   if (order) {
+    console.log(`Updating product quantities`);
     const bulkOption = cart.cartItems.map((item) => ({
       updateOne: {
         filter: { _id: item.product },
         update: { $inc: { quantity: -item.quantity, sold: +item.quantity } },
       },
     }));
+    
     await Product.bulkWrite(bulkOption, {});
+    console.log(`Product quantities updated`);
 
     // 5) Clear cart depend on cartId
     await Cart.findByIdAndDelete(cartId);
+    console.log(`Cart ${cartId} deleted`);
+    
+    return order;
   }
 });
 
@@ -192,6 +228,14 @@ exports.checkoutSession = asyncHandler(async (req, res, next) => {
 
   const totalOrderPrice = cartPrice + taxPrice + shippingPrice;
 
+  // Get frontend base URL from environment variables
+  const frontendBaseUrl = process.env.FRONTEND_BASE_URL || "http://127.0.0.1:5500";
+  
+  // Allow custom success and cancel URLs from frontend, or use default
+  const backendUrl = `${req.protocol}://${req.get("host")}`;
+  const successUrl = req.body.successUrl || `${backendUrl}/checkout-result`;
+  const cancelUrl = req.body.cancelUrl || `${backendUrl}/checkout-result`;
+
   // 3) Create stripe checkout session
   const session = await stripe.checkout.sessions.create({
     line_items: [
@@ -207,8 +251,8 @@ exports.checkoutSession = asyncHandler(async (req, res, next) => {
       },
     ],
     mode: "payment",
-    success_url: `${req.protocol}://${req.get("host")}/api/v1/products`,
-    cancel_url: `${req.protocol}://${req.get("host")}/api/v1/carts`,
+    success_url: `${successUrl}?status=success&session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${cancelUrl}?status=cancel`,
     customer_email: req.user.email,
     client_reference_id: req.params.cartId,
     metadata: {
@@ -232,22 +276,53 @@ exports.checkoutSession = asyncHandler(async (req, res, next) => {
 
 exports.webhookCheckout = asyncHandler(async (req, res, nxt) => {
   const sig = req.headers["stripe-signature"];
+  console.log("Webhook received from Stripe");
+  
+  if (!process.env.STRIPE_WEBHOOK_SECRET) {
+    console.error("STRIPE_WEBHOOK_SECRET is missing in environment variables");
+    return res.status(500).send("Webhook Error: Missing webhook secret");
+  }
+
+  if (!sig) {
+    console.error("Missing Stripe signature in webhook request");
+    return res.status(400).send("Webhook Error: No signature provided");
+  }
 
   let event;
-
   try {
+    // Verify the event came from Stripe
     event = stripe.webhooks.constructEvent(
       req.body,
       sig,
       process.env.STRIPE_WEBHOOK_SECRET
     );
-    // console.log(event);
+    console.log(`✅ Webhook verified: ${event.type}`);
   } catch (err) {
+    console.error(`⚠️ Webhook signature verification failed:`, err.message);
     return res.status(400).send(`Webhook Error: ${err.message}`);
   }
+
+  // Handle specific event types
   if (event.type === "checkout.session.completed") {
-    //  Create order
-    createCardOrder(event.data.object);
+    console.log(`💰 Processing checkout.session.completed event`);
+    try {
+      const session = event.data.object;
+      // Log important session data for debugging
+      console.log(`Session ID: ${session.id}`);
+      console.log(`Customer Email: ${session.customer_email}`);
+      console.log(`Cart ID: ${session.client_reference_id}`);
+      
+      await createCardOrder(session);
+      console.log(`✅ Order created successfully for session ${session.id}`);
+    } catch (error) {
+      console.error(`❌ Error creating order:`, error);
+      // Still return 200 to Stripe so they don't retry
+      return res.status(200).json({ 
+        received: true,
+        error: error.message,
+        success: false
+      });
+    }
   }
 
   if (event.type === "payment_intent.payment_failed") {
@@ -257,11 +332,11 @@ exports.webhookCheckout = asyncHandler(async (req, res, nxt) => {
     const failureReason = paymentIntent.last_payment_error?.message;
 
     console.log(
-      `❌ Payment failed for cart ${cartId}. Reason: ${failureReason}`
+      `❌ Payment failed for cart ${cartId}, user ${userId}. Reason: ${failureReason}`
     );
-
-    // await Cart.findByIdAndUpdate(cartId, { status: 'failed', failureReason });
   }
 
-  res.status(200).json({ received: true });
+  // Return 200 success response to acknowledge receipt of the event
+  console.log(`✅ Webhook handled successfully`);
+  return res.status(200).json({ received: true, success: true });
 });

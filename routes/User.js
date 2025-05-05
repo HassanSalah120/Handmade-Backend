@@ -50,7 +50,7 @@ router.patch("/resetPassword/:token", resetPassword);
 
 router.use(protect);
 
-router.patch("/updateMyPassword/:id", updatePassword);
+router.patch("/updateMyPassword", updatePassword);
 
 router.get("/me", getMe, getUser);
 

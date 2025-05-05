@@ -51,8 +51,6 @@ router
     updateProductValidator,
     protect,
     restrictTo("admin", "artisan"),
-    uploadProductImages,
-    resizeProductImages,
     updateProduct
   )
   .delete(

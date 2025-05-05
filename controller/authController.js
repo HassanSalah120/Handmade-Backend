@@ -212,7 +212,7 @@ exports.resetPassword = asyncHandler(async (req, res, nxt) => {
 
 exports.updatePassword = asyncHandler(async (req, res, nxt) => {
   // Get user from Collection\
-  const user = await User.findById(req.params.id).select("+password");
+  const user = await User.findById(req.user.id).select("+password");
 
   // check user password is correct
   if (!(await user.checkPassword(req.body.currentPassword, user.password))) {
