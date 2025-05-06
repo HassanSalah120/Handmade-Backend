@@ -1,7 +1,7 @@
 const { check } = require("express-validator");
 const validatorMW = require("../../middlewares/validatorMW");
 const slugify = require("slugify");
-const Category = require("../../models/subCategoryModel");
+const CategoryModel = require("../../models/categoryModel");
 
 exports.getSubCategoryValidator = [
   check("id").isMongoId().withMessage("Invalid ID format..!!"),
@@ -39,10 +39,10 @@ exports.createSubCategoryValidator = [
     .withMessage("Subcategory must be belong to category..!!")
     .isMongoId()
     .withMessage("Invalid Id Format..!!")
-    .custom(async (val) => {
-      const category = await Category.findById(val);
-      if (!category) {
-        return Promise.reject(new Error("No category found for this ID..!!"));
+    .custom(async (categoryId) => {
+      const parentCategory = await CategoryModel.findById(categoryId);
+      if (!parentCategory) {
+        return Promise.reject(new Error("No parent category found for this ID..!!"));
       }
     }),
   validatorMW,
