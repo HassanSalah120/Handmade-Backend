@@ -75,3 +75,16 @@ exports.updateProduct = updateOne(Product);
 // @route   DELETE /api/v1/products/:id
 // @access  Private/Admin
 exports.deleteProduct = deleteOne(Product);
+
+// @desc     Get all products without pagination or filters
+// @route    GET /api/v1/products/all
+// @access   Public
+exports.getAllProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find().populate('category');
+  
+  res.status(200).json({
+    status: "Success",
+    results: products.length,
+    data: products,
+  });
+});

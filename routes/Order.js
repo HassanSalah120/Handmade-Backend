@@ -7,6 +7,7 @@ const {
   findAllOrders,
   filterOrderForLoggedUser,
   checkoutSession,
+  createPaymentIntent,
 } = require("../controller/orderController");
 const { deleteOne } = require("../controller/handlersFactory");
 const Order = require("../models/orderModel");
@@ -24,7 +25,10 @@ router
   );
 router.get("/checkout-session/:cartId", checkoutSession);
 
-router.route("/:cartId").post(restrictTo("user"), createCashOrder);
+router.route("/:cartId").post(restrictTo("user", "admin"), createCashOrder);
+
+// New route for creating Payment Intent
+router.post("/create-payment-intent/:cartId", createPaymentIntent);
 
 // router.route("/:id").get(restrictTo("admin", "artisan"), getOrder);
 

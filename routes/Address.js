@@ -13,7 +13,7 @@ const {
 
 const router = express.Router();
 
-router.use(protect, restrictTo("user"));
+router.use(protect, restrictTo("user", "artisan", "admin"));
 router
   .route("/")
   .post(addAddressValidator, addAddress)

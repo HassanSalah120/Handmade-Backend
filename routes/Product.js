@@ -10,6 +10,7 @@ const {
   aliasTopProducts,
   uploadProductImages,
   resizeProductImages,
+  getAllProducts,
 } = require("../controller/productController");
 
 /**
@@ -32,6 +33,8 @@ const router = express.Router();
 router.use("/:productId/reviews", reviewRouter);
 
 router.route("/top-rated").get(aliasTopProducts, getProducts);
+
+router.route("/all").get(getAllProducts);
 
 router
   .route("/")

@@ -274,6 +274,63 @@ exports.checkoutSession = asyncHandler(async (req, res, next) => {
   });
 });
 
+// New function to create Payment Intent
+exports.createPaymentIntent = asyncHandler(async (req, res, nxt) => {
+  // app settings (similar to checkoutSession)
+  const taxPrice = 0;
+  const shippingPrice = 0;
+
+  // 1) Get cart depend on cartId
+  const cart = await Cart.findById(req.params.cartId);
+  if (!cart) {
+    return nxt(
+      new AppError(`There is no such cart with id ${req.params.cartId}`, 404)
+    );
+  }
+
+  // 2) Get order price depend on cart price "Check if coupon apply"
+  const cartPrice = cart.totalPriceAfterDiscount
+    ? cart.totalPriceAfterDiscount
+    : cart.totalCartPrice;
+
+  const totalOrderPrice = cartPrice + taxPrice + shippingPrice;
+  const totalOrderPriceInSmallestUnit = Math.round(totalOrderPrice * 100);
+
+  // TODO: Implement logic to retrieve or create Stripe customer ID if needed
+  // const customer = await getOrCreateStripeCustomer(req.user);
+
+  // 3) Create a PaymentIntent with the order amount and currency
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: totalOrderPriceInSmallestUnit,
+    currency: "egp", // Use your actual currency
+    // customer: customer.id, // Optional: Associate with Stripe customer
+    metadata: {
+      cartId: req.params.cartId,
+      userId: req.user._id.toString(),
+      // Add any other relevant metadata
+    },
+    // In the latest version of the API, specifying the `automatic_payment_methods` parameter
+    // is optional because Stripe enables its functionality by default.
+    automatic_payment_methods: {
+      enabled: true,
+    },
+  });
+
+  // 4) Get Stripe Publishable Key from environment variables
+  const publishableKey = process.env.STRIPE_PUBLISHABLE_KEY;
+  if (!publishableKey) {
+    console.error("Stripe Publishable Key not found in environment variables");
+    // Decide if you want to throw an error or proceed without it
+    // return nxt(new AppError('Internal server configuration error', 500));
+  }
+
+  // 5) Send publishable key and PaymentIntent client secret to client
+  res.status(200).json({
+    clientSecret: paymentIntent.client_secret,
+    publishableKey: publishableKey, // Send key so frontend doesn't need to hardcode
+  });
+});
+
 exports.webhookCheckout = asyncHandler(async (req, res, nxt) => {
   const sig = req.headers["stripe-signature"];
   console.log("Webhook received from Stripe");

@@ -18,7 +18,7 @@ exports.addAddressValidator = [
   check("city").notEmpty().withMessage("City is required..!!"),
   check("postalCode")
     .optional()
-    .isPostalCode()
+    .isPostalCode('any')
     .withMessage("Postal code must be valid."),
   validatorMW,
 ];
